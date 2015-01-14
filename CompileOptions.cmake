@@ -1,7 +1,9 @@
 # Copyright 2014 (C). Alex Robenko. All rights reserved.
 
 macro (_ext_add_option_suf var_name suffix)
-    set (${var_name}${suffix} ${${var_name}${suffix}} ${ARGN})
+    foreach (_a ${ARGN})
+        set (${var_name}${suffix} "${${var_name}${suffix}} ${_a}")
+    endforeach ()
 endmacro ()
 
 macro (_ext_add_option_config var_name config)
